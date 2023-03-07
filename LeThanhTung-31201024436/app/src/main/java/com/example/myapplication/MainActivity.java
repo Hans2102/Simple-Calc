@@ -175,18 +175,22 @@ public class MainActivity extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                var2 = Double.parseDouble(txt1.getText().toString());
-                if(addition)
+                var2 = Double.parseDouble(txt1.getText().toString());                
+                if(addition){
                     ans = var1 + var2;
-                else if (subtract)
+                    addition = false;
+                } else if (subtract){
                     ans = var1 - var2;
-                else if (multiply)
-                    ans = (var1 * var2);
-                else if (divide)
-                    ans = (var1 / var2);
-                else
+                    subtract = false;
+                } else if (multiply){
+                    ans = var1 * var2;
+                    multiply = false;
+                } else if (divide){
+                    ans = var1 / var2;
+                    divide = false;
+                } else {
                     ans = ans + 0;
-
+                }
                 txt2.setText(ans.toString());
                 enter.setEnabled(false);
             }
